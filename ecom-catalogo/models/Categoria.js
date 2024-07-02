@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     IDProprietario: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: true
     }
   });
 

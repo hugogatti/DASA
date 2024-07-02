@@ -16,11 +16,13 @@
       },
       IDCategoria: {
         type: DataTypes.INTEGER,
-        allowNull: true
+        allowNull: true,
+        unique: true
       },
       IDProprietario: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        unique: true
       }
     });
   
