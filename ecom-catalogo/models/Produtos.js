@@ -1,37 +1,31 @@
+'use strict';
 
-//Informações do Produtos
-  module.exports = (sequelize, DataTypes) => {
-    const Produtos = sequelize.define('Produtos', {
-      nomeProduto: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      desc: {
-        type: DataTypes.TEXT,
-        allowNull: false
-      },
-      preco: {
-        type: DataTypes.FLOAT,
-        allowNull: false
-      },
-      IDCategoria: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        unique: true
-      },
-      IDProprietario: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true
+module.exports = (sequelize, DataTypes) => {
+  const Produto = sequelize.define('Produto', {
+    nomeProduto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    descProduto: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    precoProduto: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    IDCategoria: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'categorias',
+        key: 'IDCategoria'
       }
-    });
-  
-    Produtos.associate = (models) => {
-      Produtos.belongsTo(models.Categoria, {
-        foreignKey: 'IDCategoria',
-        as: 'categoria'
-      });
-    };
-  
-    return Produtos;
+    }
+  }, {});
+
+  Produto.associate = function(models) {
+    Produto.belongsTo(models.Categoria, { foreignKey: 'IDCategoria', as: 'categorias' });
   };
+
+  return Produto;
+};

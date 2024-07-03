@@ -1,26 +1,19 @@
-//Informações das categorias
+'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Categoria = sequelize.define('Categoria', {
     nomeCategoria: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    desc: {
-      type: DataTypes.TEXT,
+    descCategoria: {
+      type: DataTypes.STRING,
       allowNull: false
-    },
-    IDProprietario: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true
     }
-  });
+  }, {});
 
-  Categoria.associate = (models) => {
-    Categoria.hasMany(models.Produtos, {
-      foreignKey: 'IDCategoria',
-      as: 'produtos'
-    });
+  Categoria.associate = function(models) {
+    Categoria.hasMany(models.Produto, { foreignKey: 'IDCategoria', as: 'produtos' });
   };
 
   return Categoria;

@@ -1,41 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const { Produtos } = require('../models');
+const { Produto } = require('../models');
 
-// Criando um produto no BD
+// Listar todos os produtos
+router.get('/', async (req, res) => {
+  const produtos = await Produto.findAll();
+  res.json(produtos);
+});
+
+// Criar um novo produto
 router.post('/', async (req, res) => {
-  const { nomeProduto, desc, preco, IDCategoria, IDProprietario } = req.body;
-  const Produto = await Produto.create({ nomeProduto, desc, preco, IDCategoria, IDProprietario });
-  res.status(201).json(Produto);
+  const { nomeProduto, descProduto, precoProduto, IDCategoria } = req.body;
+  const novoProduto = await Produto.create({ nomeProduto, descProduto, precoProduto, IDCategoria });
+  res.json(novoProduto);
 });
 
 // Atualizar um produto
-router.put('/:ID', async (req, res) => {
-  const { ID } = req.params;
-  const { nomeProduto, desc, preco, IDCategoria, IDProprietario } = req.body;
-  const Produto = await Produto.update({ nomeProduto, desc, preco, IDCategoria, IDProprietario }, { where: { ID } });
-  res.json(Produto);
+router.put('/:IDProduto', async (req, res) => {
+  const { IDProduto } = req.params;
+  const { nomeProduto, descProduto, precoProduto, IDCategoria } = req.body;
+  await Produto.update({ nomeProduto, descProduto, precoProduto, IDCategoria }, { where: { IDProduto } });
+  res.json({ message: 'Produto atualizado com sucesso' });
 });
 
-// Excluindo um produto
-router.delete('/:ID', async (req, res) => {
-  const { ID } = req.params;
-  await Produto.destroy({ where: { ID } });
-  res.status(204).end();
-});
-
-// Associando um produto a uma categoria
-router.post('/:ID/categoriaAssoc', async (req, res) => {
-  const { ID } = req.params;
-  const { IDCategoria } = req.body;
-  const Produto = await Produto.findByPk(ID);
-  if (Produto) {
-    Produto.IDCategoria = IDCategoria;
-    await Produto.save();
-    res.json(Produto);
-  } else {
-    res.status(404).send('Produto não foi encontrado');
-  }
+// Excluir um produto
+router.delete('/:IDProduto', async (req, res) => {
+  const { IDProduto } = req.params;
+  await Produto.destroy({ where: { IDProduto } });
+  res.json({ message: 'Produto excluído com sucesso' });
 });
 
 module.exports = router;
