@@ -1,4 +1,4 @@
-const { Produto } = require('../models');
+const { Produto } = require('../models/ProdutosMod');
 
 exports.createProduto = async (req, res) => {
     try {
@@ -30,7 +30,7 @@ exports.updateProduto = async (req, res) => {
             const produto = await Produto.findOne({ where: { ID: req.params.ID } });
             res.status(200).json(produto);
         } else {
-            throw new Error('Produto não foi encontrado');
+            throw new Error('O Produto Não Foi Encontrado');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -40,12 +40,12 @@ exports.updateProduto = async (req, res) => {
 exports.deleteProduto = async (req, res) => {
     try {
         const excluirProd = await Produto.destroy({
-            where: { id: req.params.id }
+            where: { ID: req.params.ID }
         });
         if (excluirProd) {
             res.status(204).send();
         } else {
-            throw new Error('Produto não foi encontrado');
+            throw new Error('O Produto Não Foi Encontrado');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

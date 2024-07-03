@@ -1,4 +1,4 @@
-const { Categoria } = require('../models');
+const { Categoria } = require('../models/indexMod');
 
 exports.createCategoria = async (req, res) => {
     try {
@@ -18,7 +18,7 @@ exports.updateCategoria = async (req, res) => {
             const categoria = await Categoria.findOne({ where: { ID: req.params.ID } });
             res.status(200).json(categoria);
         } else {
-            throw new Error('Categoria não foi encontrada');
+            throw new Error('A Categoria Não Foi Encontrada');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -33,7 +33,7 @@ exports.deleteCategoria = async (req, res) => {
         if (excluirCat) {
             res.status(204).send();
         } else {
-            throw new Error('Categoria não foi encontrada');
+            throw new Error('A Categoria Não Foi Encontrada');
         }
     } catch (error) {
         res.status(400).json({ error: error.message });

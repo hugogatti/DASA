@@ -10,42 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             alert('Operação realizada com sucesso!');
+            console.log(data);
         })
-        .catch(error => {
-            alert('Erro ao realizar a operação: ' + error.message);
-        });
+        .catch(error => console.error('Erro:', error));
     };
 
-    // Cadastro de Produto
-    const produtoForm = document.getElementById('produtoForm');
-    if (produtoForm) {
-        produtoForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(produtoForm);
-            const data = Object.fromEntries(formData.entries());
-            sendFormData('/products', 'POST', data);
-        });
-    }
+    // Exemplo de como capturar dados do formulário e enviar para o backend
+    document.getElementById('categoriaForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nomeCategoria = document.getElementById('nomeCategoria').value;
+        const descCategoria = document.getElementById('descCategoria').value;
+        const categoriaData = { nomeCategoria, descCategoria };
+        sendFormData('/categorias', 'POST', categoriaData);
+    });
 
-    // Cadastro de Categoria
-    const categoriaForm = document.getElementById('categoriaForm');
-    if (categoriaForm) {
-        categoriaForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(categoriaForm);
-            const data = Object.fromEntries(formData.entries());
-            sendFormData('/categories', 'POST', data);
-        });
-    }
-
-    // Associação de Produto a Categoria
-    const associarForm = document.getElementById('associarForm');
-    if (associarForm) {
-        associarForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(associarForm);
-            const data = Object.fromEntries(formData.entries());
-            sendFormData('/products/associate', 'POST', data);
-        });
-    }
+    document.getElementById('produtoForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nomeProduto = document.getElementById('nomeProduto').value;
+        const descProduto = document.getElementById('descProduto').value;
+        const precoProduto = document.getElementById('precoProduto').value;
+        const IDCategoria = document.getElementById('IDCategoria').value;
+        const IDProprietario = document.getElementById('IDProprietario').value;
+        const produtoData = { nomeProduto, descProduto, precoProduto, IDCategoria, IDProprietario };
+        sendFormData('/produtos', 'POST', produtoData);
+    });
 });

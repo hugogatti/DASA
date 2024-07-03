@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         model: 'categorias',
         key: 'IDCategoria'
       }
+    },
+    IDProprietario: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {});
 

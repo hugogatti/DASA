@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Produto</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Cadastrar Produto</h1>
-    <form id="produtoForm">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="description">Descrição:</label>
-        <input type="text" id="description" name="description" required>
-        <label for="price">Preço:</label>
-        <input type="number" id="price" name="price" required>
-        <label for="ownerId">ID do Proprietário:</label>
-        <input type="number" id="ownerId" name="ownerId" required>
-        <button type="submit">Cadastrar Produto</button>
-    </form>
-    <script src="scripts.js"></script>
+    <div class="containerForm">
+        <h1>Cadastrar Produto</h1>
+        <form id="produtoForm">
+            <p>
+                <label for="nomeProduto">Nome do Produto:</label>
+                <input type="text" id="nomeProduto" name="nomeProduto" required>
+            </p>
+            <p>
+                <label for="descProduto">Descrição:</label>
+                <input type="text" id="descProduto" name="descProduto" required>
+            </p>
+            <p>
+                <label for="precoProduto">Preço:</label>
+                <input type="text" id="precoProduto" name="precoProduto" required>
+            </p>
+            <p>
+                <label for="IDProprietario">Proprietário:</label>
+                <input type="number" placeholder="Apenas Números" id="IDProprietario" name="IDProprietario" required >
+            </p>
+            <p>
+                <a href="index.html" class="btnVoltar">Voltar</a>
+                <button type="submit" class="btn">Cadastrar Produto</button>                
+            </p>
+        </form>
+        
+    </div>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

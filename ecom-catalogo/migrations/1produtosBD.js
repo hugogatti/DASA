@@ -21,14 +21,9 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
-      IDCategoria: {
+      IDProprietario: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'categorias',
-          key: 'IDCategoria'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+        allowNull: false
       },
       CriadoEm: {
         allowNull: false,
@@ -40,7 +35,6 @@ module.exports = {
       }
     });
   },
-
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('produtos');
   }

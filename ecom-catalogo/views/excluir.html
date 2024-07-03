@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir Produto ou Categoria</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Excluir Produto ou Categoria</h1>
-    <form id="excluirForm">
-        <label for="tipo">Tipo:</label>
-        <select id="tipo" name="tipo" required>
-            <option value="produto">Produto</option>
-            <option value="categoria">Categoria</option>
-        </select>
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id" required>
-        <button type="submit">Excluir</button>
-    </form>
+    <div class="container">
+        <h1>Excluir Produto ou Categoria</h1>
+        <form id="excluirForm">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="produto">Produto</option>
+                <option value="categoria">Categoria</option>
+            </select>
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" required>            
+            <p>
+                <a href="index.html" class="btnVoltar">Voltar</a>
+                <button class="btn" type="submit">Excluir</button>
+            </p>
+        </form>        
+    </div>
     <script src="scripts.js"></script>
 </body>
 </html>

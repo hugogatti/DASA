@@ -9,6 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     descCategoria: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    IDProprietario: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'produtos',
+        key: 'IDProprietario'
+      }
     }
   }, {});
 
