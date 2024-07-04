@@ -12,10 +12,10 @@ exports.createCategoria = async (req, res) => {
 exports.updateCategoria = async (req, res) => {
     try {
         const [atualizarCat] = await Categoria.update(req.body, {
-            where: { ID: req.params.ID }
+            where: { IDCategoria: req.params.IDCategoria }
         });
         if (atualizarCat) {
-            const categoria = await Categoria.findOne({ where: { ID: req.params.ID } });
+            const categoria = await Categoria.findOne({ where: { IDCategoria: req.params.IDCategoria } });
             res.status(200).json(categoria);
         } else {
             throw new Error('A Categoria Não Foi Encontrada');
@@ -28,7 +28,7 @@ exports.updateCategoria = async (req, res) => {
 exports.deleteCategoria = async (req, res) => {
     try {
         const excluirCat = await Categoria.destroy({
-            where: { ID: req.params.ID }
+            where: { IDCategoria: req.params.IDCategoria }
         });
         if (excluirCat) {
             res.status(204).send();

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nomeCategoria = document.getElementById('nomeCategoria').value;
         const descCategoria = document.getElementById('descCategoria').value;
         const categoriaData = { nomeCategoria, descCategoria };
-        sendFormData('/categorias', 'POST', categoriaData);
+        sendFormData('/categorias', 'post', categoriaData);
     });
 
     document.getElementById('produtoForm').addEventListener('submit', (e) => {
@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const IDCategoria = document.getElementById('IDCategoria').value;
         const IDProprietario = document.getElementById('IDProprietario').value;
         const produtoData = { nomeProduto, descProduto, precoProduto, IDCategoria, IDProprietario };
-        sendFormData('/produtos', 'POST', produtoData);
+        sendFormData('/produtos', 'post', produtoData);
     });
 });

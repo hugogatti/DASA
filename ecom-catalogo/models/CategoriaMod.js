@@ -1,7 +1,12 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Categoria = sequelize.define('Categoria', {
+  const Categoria = sequelize.define('categorias', {
+    IDCategoria: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     nomeCategoria: {
       type: DataTypes.STRING,
       allowNull: false
@@ -10,14 +15,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    IDProprietario: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'produtos',
-        key: 'IDProprietario'
-      }
+    CriadoEm: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'CriadoEm',
+      defaultValue: DataTypes.NOW
+    },
+    Atualizacao: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      field: 'Atualizacao',
+      defaultValue: DataTypes.NOW
     }
-  }, {});
+  }, {
+    tableName: 'categorias',
+    timestamps: false
+  });
 
   Categoria.associate = function(models) {
     Categoria.hasMany(models.Produto, { foreignKey: 'IDCategoria', as: 'produtos' });
