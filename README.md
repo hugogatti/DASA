@@ -1,5 +1,4 @@
-# DASA - Teste Analista de Engenharia de Software
-Hugo Gatti Ferreira de Souza, 27 Anos
+Hugo Gatti, 27 Anos
 
 # Desenvolvimento de API para Gerenciamento de Catálogo de Produtos
 Neste projeto, desenvolvemos uma API utilizando Node.js para gerenciar o catálogo de produtos de um aplicativo de e-commerce.
